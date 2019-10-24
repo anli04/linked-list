@@ -8,13 +8,16 @@ struct node * createLL(){
 }
 
 void print_list(struct node * l){
-  if (l == NULL) printf("[ ]");
+  if (!l){
+    printf("[ ]");
+    return;
+  }
   struct node *p = l -> next;
   printf("[");
-  if (p == NULL) printf(" ");
+  if (!p) printf(" ");
   else{
     printf("%d", l -> i);
-    while (p -> next != NULL){
+    while (p -> next){
       printf(", %d", p -> i);
       p = p -> next;
     }
@@ -34,6 +37,6 @@ struct node * free_list(struct node * l){
   printf("freeing node: %d\n", l -> i);
   free(l);
   l = NULL;
-  if (p != NULL) free_list(p);
+  if (p) free_list(p);
   return l;
 }
