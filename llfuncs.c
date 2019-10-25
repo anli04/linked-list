@@ -2,25 +2,21 @@
 
 struct node * createLL(){
   struct node *p = malloc(sizeof(struct node));
-  p -> i = 0;
-  p -> next = NULL;
+  p = NULL;
   return p;
 }
 
 void print_list(struct node * l){
   if (!l){
-    printf("[ ]");
+    printf("[ ]\n");
     return;
   }
   struct node *p = l -> next;
   printf("[");
-  if (!p) printf(" ");
-  else{
-    printf("%d", l -> i);
-    while (p -> next){
-      printf(", %d", p -> i);
-      p = p -> next;
-    }
+  printf("%d", l -> i);
+  while (p){
+    printf(", %d", p -> i);
+    p = p -> next;
   }
   printf("]\n");
 }
@@ -40,7 +36,7 @@ struct node * removeN(struct node *l, int n){
     return p;
   }
   struct node *pp = l;
-  while (p -> next){
+  while (p){
     if (p -> i == n){
       pp -> next = p -> next;
       free(p);
@@ -55,8 +51,7 @@ struct node * removeN(struct node *l, int n){
 
 struct node * free_list(struct node * l){
   struct node *p = l -> next;
-  if (p) printf("freeing node: %d\n", l -> i);
-  else printf("List freed.\n");
+  if (l) printf("freeing node: %d\n", l -> i);
   free(l);
   l = NULL;
   if (p) free_list(p);
