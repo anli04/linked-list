@@ -56,6 +56,7 @@ struct node * removeN(struct node *l, int n){
 struct node * free_list(struct node * l){
   struct node *p = l -> next;
   if (p) printf("freeing node: %d\n", l -> i);
+  else printf("List freed.\n");
   free(l);
   l = NULL;
   if (p) free_list(p);
