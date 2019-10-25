@@ -32,9 +32,30 @@ struct node * insert_front(struct node * l, int n){
   return p;
 }
 
+struct node * removeN(struct node *l, int n){
+  struct node *p = l -> next;
+  if (l -> i == n){
+    free(l);
+    l = NULL;
+    return p;
+  }
+  struct node *pp = l;
+  while (p -> next){
+    if (p -> i == n){
+      pp -> next = p -> next;
+      free(p);
+      p = NULL;
+      return l;
+    }
+    pp = p;
+    p = p -> next;
+  }
+  return l;
+}
+
 struct node * free_list(struct node * l){
   struct node *p = l -> next;
-  printf("freeing node: %d\n", l -> i);
+  if (p) printf("freeing node: %d\n", l -> i);
   free(l);
   l = NULL;
   if (p) free_list(p);

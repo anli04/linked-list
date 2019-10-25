@@ -11,4 +11,5 @@ struct node{
 struct node * createLL();
 void print_list(struct node * l);
 struct node * insert_front(struct node * l, int n);
+struct node * removeN(struct node *l, int n);
 struct node * free_list(struct node * l);

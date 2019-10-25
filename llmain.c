@@ -8,6 +8,15 @@ int main(){
   int x = 0;
   for (; x < 10; x++) l = insert_front(l, x);
   print_list(l);
+  printf("Removing 6.\n");
+  l = removeN(l, 6);
+  print_list(l);
+  printf("Removing 0.\n");
+  l = removeN(l, 0);
+  print_list(l);
+  printf("Removing 0.\n");
+  l = removeN(l, 0);
+  print_list(l);
   printf("Freeing list.\n");
   l = free_list(l);
   printf("Printing list.\n");
